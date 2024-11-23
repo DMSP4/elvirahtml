@@ -25,63 +25,69 @@
     <div class="container my-5">
       <div class="row">
         <div class="col-lg-5 mx-auto">
-          <h4>
+          <h5>
             1 Если вы уже обращались к нумерологам, поделитесь пожалуйста своим
             опытом. Что вам понравилось, а что не удовлетворило вас?
-          </h4>
+          </h5>
           <form id="form1" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             2 Имеете ли вы представление о своей жизненной миссии или цели?
-          </h4>
+          </h5>
           <form id="form2" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             3 Есть ли конкретные вопросы о числах, датах, которые вы бы хотели
             обсудить на консультации с нумерологом? Какие?
-          </h4>
+          </h5>
           <form id="form3" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             4 Какие аспекты вашей жизни вас сейчас особенно интересуют?
             (Например, карьера, отношения, личное развитие, дети)
-          </h4>
+          </h5>
           <form id="form4" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             5 Решение Текущих Проблем: Существует ли у вас конкретные вопросы
             или проблемы, которые вы хотели бы решить с помощью нумерологии в
             ближайшее время?
-          </h4>
+          </h5>
           <form id="form5" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             6 Есть ли у вас близкие или родные люди, которым также могла бы
             помочь нумерология в решении судьбоносных вопросах? Кто эти люди?
             Какие сложности сейчас у этих людей?
-          </h4>
+          </h5>
           <form id="form6" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <h4>
+          <h5>
             7, Цели и Ожидания: Скажите, какую конкретную пользу вы бы хотели
             получить от консультации с профессиональным нумерологом?
-          </h4>
+          </h5>
           <form id="form7" class="mb-4">
-            <textarea class="form-control" style="width: 100%;" rows="3"></textarea>
+            <textarea class="form-control" style="width: 100%;" rows="4"></textarea>
           </form>
-          <batton type="submit" class="btn btn-primary">Отправить</button>
+          <batton type="submit" class="btn btn-primary" id="send">Отправить</button>
         </div>
       </div>
     </div>
     <script src="https://telegram.org/js/telegram-web-app.js?56"></script>
     <script>
-      elvira tg = window.Telegram.WebApp;
+      let tg = window.Telegram.WebApp;
+      let form = document.getElementById("form1");
+      let send = document.getElementById("send");
+
+      send.addEventListener("click", function () {
+        tg.close();
+      });
     </script>
   </body>
 </html>
