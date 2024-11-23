@@ -84,8 +84,29 @@
       let tg = window.Telegram.WebApp;
       let form = document.getElementById("form1");
       let send = document.getElementById("send");
+      tg.expand();
 
       send.addEventListener("click", () => {
+        let antwort1 = document.getElementById("form1").querySelector("textarea").value;
+        let antwort2 = document.getElementById("form2").querySelector("textarea").value;
+        let antwort3 = document.getElementById("form3").querySelector("textarea").value;
+        let antwort4 = document.getElementById("form4").querySelector("textarea").value;
+        let antwort5 = document.getElementById("form5").querySelector("textarea").value;
+        let antwort6 = document.getElementById("form6").querySelector("textarea").value;
+        let antwort7 = document.getElementById("form7").querySelector("textarea").value;
+
+        let data = {
+          antwort1: antwort1,
+          antwort2: antwort2,
+          antwort3: antwort3,
+          antwort4: antwort4,
+          antwort5: antwort5,
+          antwort6: antwort6,
+          antwort7: antwort7,
+        };
+
+        tg.sendData(JSON.stringify(data));
+
         tg.close();
       });
     </script>
