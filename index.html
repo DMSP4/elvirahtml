@@ -162,7 +162,7 @@
           }
         });
       fillLater.addEventListener("click", () => {
-        tg.sendData("выход");
+        tg.sendData(JSON.stringify("выход"));
         tg.close();
       });
       // send.addEventListener("click", () => {
