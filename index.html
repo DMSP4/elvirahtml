@@ -46,82 +46,77 @@
             дружеской 30 минутной беседы, на которой уже подробно поговорим о
             том, какой результат вы сможете получить со мной.
           </h5>
-          <h5>
-            1 Если вы уже обращались к нумерологам, поделитесь пожалуйста своим
-            опытом. Что вам понравилось, а что не удовлетворило вас?
-          </h5>
-          <form id="form1" class="mb-4">
+          <form id="mainForm" class="mb-4">
+            <h5>
+              1 Если вы уже обращались к нумерологам, поделитесь пожалуйста
+              своим опытом. Что вам понравилось, а что не удовлетворило вас?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            2 Имеете ли вы представление о своей жизненной миссии или цели?
-          </h5>
-          <form id="form2" class="mb-4">
+            <h5>
+              2 Имеете ли вы представление о своей жизненной миссии или цели?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            3 Есть ли конкретные вопросы о числах, датах, которые вы бы хотели
-            обсудить на консультации с нумерологом? Какие?
-          </h5>
-          <form id="form3" class="mb-4">
+            <h5>
+              3 Есть ли конкретные вопросы о числах, датах, которые вы бы хотели
+              обсудить на консультации с нумерологом? Какие?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            4 Какие аспекты вашей жизни вас сейчас особенно интересуют?
-            (Например, карьера, отношения, личное развитие, дети)
-          </h5>
-          <form id="form4" class="mb-4">
+            <h5>
+              4 Какие аспекты вашей жизни вас сейчас особенно интересуют?
+              (Например, карьера, отношения, личное развитие, дети)
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            5 Решение Текущих Проблем: Существует ли у вас конкретные вопросы
-            или проблемы, которые вы хотели бы решить с помощью нумерологии в
-            ближайшее время?
-          </h5>
-          <form id="form5" class="mb-4">
+            <h5>
+              5 Решение Текущих Проблем: Существует ли у вас конкретные вопросы
+              или проблемы, которые вы хотели бы решить с помощью нумерологии в
+              ближайшее время?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            6 Есть ли у вас близкие или родные люди, которым также могла бы
-            помочь нумерология в решении судьбоносных вопросах? Кто эти люди?
-            Какие сложности сейчас у этих людей?
-          </h5>
-          <form id="form6" class="mb-4">
+            <h5>
+              6 Есть ли у вас близкие или родные люди, которым также могла бы
+              помочь нумерология в решении судьбоносных вопросах? Кто эти люди?
+              Какие сложности сейчас у этих людей?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
-          </form>
-          <h5>
-            7 Цели и Ожидания: Скажите, какую конкретную пользу вы бы хотели
-            получить от консультации с профессиональным нумерологом?
-          </h5>
-          <form id="form7" class="mb-4">
+            <h5>
+              7 Цели и Ожидания: Скажите, какую конкретную пользу вы бы хотели
+              получить от консультации с профессиональным нумерологом?
+            </h5>
             <textarea
               class="form-control"
               style="width: 100%"
               rows="4"
+              required
             ></textarea>
           </form>
           <button type="submit" class="btn btn-primary" id="send">
@@ -136,54 +131,22 @@
       let send = document.getElementById("send");
       tg.expand();
 
-      send.addEventListener("click", () => {
+      document.getElementById("mainForm").addEventListener("submit", (event) => {
         event.preventDefault(); // Предотвращаем отправку формы
 
-        let form1 = document.getElementById("form1");
-        let form2 = document.getElementById("form2");
-        let form3 = document.getElementById("form3");
-        let form4 = document.getElementById("form4");
-        let form5 = document.getElementById("form5");
-        let form6 = document.getElementById("form6");
-        let form7 = document.getElementById("form7");
+        let form = document.getElementById("mainForm");
 
-        if (
-          form1.checkValidity() &&
-          form2.checkValidity() &&
-          form3.checkValidity() &&
-          form4.checkValidity() &&
-          form5.checkValidity() &&
-          form6.checkValidity() &&
-          form7.checkValidity()
-        ) {
-          let antwort1 = form1.querySelector("textarea").value;
-          let antwort2 = form2.querySelector("textarea").value;
-          let antwort3 = form3.querySelector("textarea").value;
-          let antwort4 = form4.querySelector("textarea").value;
-          let antwort5 = form5.querySelector("textarea").value;
-          let antwort6 = form6.querySelector("textarea").value;
-          let antwort7 = form7.querySelector("textarea").value;
-
-          let data = {
-            antwort1: antwort1,
-            antwort2: antwort2,
-            antwort3: antwort3,
-            antwort4: antwort4,
-            antwort5: antwort5,
-            antwort6: antwort6,
-            antwort7: antwort7,
-          };
+        if (form.checkValidity()) {
+          let data = {};
+          let textareas = form.querySelectorAll("textarea");
+          textareas.forEach((textarea, index) => {
+            data[`antwort${index + 1}`] = textarea.value;
+          });
 
           tg.sendData(JSON.stringify(data));
           tg.close();
         } else {
-          form1.reportValidity();
-          form2.reportValidity();
-          form3.reportValidity();
-          form4.reportValidity();
-          form5.reportValidity();
-          form6.reportValidity();
-          form7.reportValidity();
+          form.reportValidity();
         }
       });
       // send.addEventListener("click", () => {
