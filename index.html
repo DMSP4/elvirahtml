@@ -136,43 +136,93 @@
       let send = document.getElementById("send");
       tg.expand();
 
-      send.addEventListener("click", () => {
-        let antwort1 = document
-          .getElementById("form1")
-          .querySelector("textarea").value;
-        let antwort2 = document
-          .getElementById("form2")
-          .querySelector("textarea").value;
-        let antwort3 = document
-          .getElementById("form3")
-          .querySelector("textarea").value;
-        let antwort4 = document
-          .getElementById("form4")
-          .querySelector("textarea").value;
-        let antwort5 = document
-          .getElementById("form5")
-          .querySelector("textarea").value;
-        let antwort6 = document
-          .getElementById("form6")
-          .querySelector("textarea").value;
-        let antwort7 = document
-          .getElementById("form7")
-          .querySelector("textarea").value;
+      send.addEventListener("click", (event) => {
+        event.preventDefault(); // Предотвращаем отправку формы
 
-        let data = {
-          antwort1: antwort1,
-          antwort2: antwort2,
-          antwort3: antwort3,
-          antwort4: antwort4,
-          antwort5: antwort5,
-          antwort6: antwort6,
-          antwort7: antwort7,
-        };
+        let form1 = document.getElementById("form1");
+        let form2 = document.getElementById("form2");
+        let form3 = document.getElementById("form3");
+        let form4 = document.getElementById("form4");
+        let form5 = document.getElementById("form5");
+        let form6 = document.getElementById("form6");
+        let form7 = document.getElementById("form7");
 
-        tg.sendData(JSON.stringify(data));
+        if (
+          form1.checkValidity() &&
+          form2.checkValidity() &&
+          form3.checkValidity() &&
+          form4.checkValidity() &&
+          form5.checkValidity() &&
+          form6.checkValidity() &&
+          form7.checkValidity()
+        ) {
+          let antwort1 = form1.querySelector("textarea").value;
+          let antwort2 = form2.querySelector("textarea").value;
+          let antwort3 = form3.querySelector("textarea").value;
+          let antwort4 = form4.querySelector("textarea").value;
+          let antwort5 = form5.querySelector("textarea").value;
+          let antwort6 = form6.querySelector("textarea").value;
+          let antwort7 = form7.querySelector("textarea").value;
 
-        tg.close();
+          let data = {
+            antwort1: antwort1,
+            antwort2: antwort2,
+            antwort3: antwort3,
+            antwort4: antwort4,
+            antwort5: antwort5,
+            antwort6: antwort6,
+            antwort7: antwort7,
+          };
+
+          tg.sendData(JSON.stringify(data));
+          tg.close();
+        } else {
+          form1.reportValidity();
+          form2.reportValidity();
+          form3.reportValidity();
+          form4.reportValidity();
+          form5.reportValidity();
+          form6.reportValidity();
+          form7.reportValidity();
+        }
       });
+      // send.addEventListener("click", () => {
+      //   let antwort1 = document
+      //     .getElementById("form1")
+      //     .querySelector("textarea").value;
+      //   let antwort2 = document
+      //     .getElementById("form2")
+      //     .querySelector("textarea").value;
+      //   let antwort3 = document
+      //     .getElementById("form3")
+      //     .querySelector("textarea").value;
+      //   let antwort4 = document
+      //     .getElementById("form4")
+      //     .querySelector("textarea").value;
+      //   let antwort5 = document
+      //     .getElementById("form5")
+      //     .querySelector("textarea").value;
+      //   let antwort6 = document
+      //     .getElementById("form6")
+      //     .querySelector("textarea").value;
+      //   let antwort7 = document
+      //     .getElementById("form7")
+      //     .querySelector("textarea").value;
+
+      //   let data = {
+      //     antwort1: antwort1,
+      //     antwort2: antwort2,
+      //     antwort3: antwort3,
+      //     antwort4: antwort4,
+      //     antwort5: antwort5,
+      //     antwort6: antwort6,
+      //     antwort7: antwort7,
+      //   };
+
+      //   tg.sendData(JSON.stringify(data));
+
+      //   tg.close();
+      // });
     </script>
   </body>
 </html>
