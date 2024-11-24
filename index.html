@@ -52,7 +52,7 @@
               своим опытом. Что вам понравилось, а что не удовлетворило вас?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -61,7 +61,7 @@
               2 Имеете ли вы представление о своей жизненной миссии или цели?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -71,7 +71,7 @@
               обсудить на консультации с нумерологом? Какие?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -81,7 +81,7 @@
               (Например, карьера, отношения, личное развитие, дети)
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -92,7 +92,7 @@
               ближайшее время?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -103,7 +103,7 @@
               Какие сложности сейчас у этих людей?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
@@ -113,15 +113,24 @@
               получить от консультации с профессиональным нумерологом?
             </h5>
             <textarea
-              class="form-control"
+              class="form-control mb-4"
               style="width: 100%"
               rows="4"
               required
             ></textarea>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary mb-4 me-2" id="send">
+                Отправить ответы
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary mb-4"
+                id="fillLater"
+              >
+                Заполнить позже
+              </button>
+            </div>
           </form>
-          <button type="submit" class="btn btn-primary" id="send">
-            Отправить ответы
-          </button>
         </div>
       </div>
     </div>
@@ -129,25 +138,32 @@
     <script>
       let tg = window.Telegram.WebApp;
       let send = document.getElementById("send");
+      let fillLater = document.getElementById("fillLater");
       tg.expand();
 
-      document.getElementById("mainForm").addEventListener("submit", (event) => {
-        event.preventDefault(); // Предотвращаем отправку формы
+      document
+        .getElementById("mainForm")
+        .addEventListener("submit", (event) => {
+          event.preventDefault(); // Предотвращаем отправку формы
 
-        let form = document.getElementById("mainForm");
+          let form = document.getElementById("mainForm");
 
-        if (form.checkValidity()) {
-          let data = {};
-          let textareas = form.querySelectorAll("textarea");
-          textareas.forEach((textarea, index) => {
-            data[`antwort${index + 1}`] = textarea.value;
-          });
+          if (form.checkValidity()) {
+            let data = {};
+            let textareas = form.querySelectorAll("textarea");
+            textareas.forEach((textarea, index) => {
+              data[`antwort${index + 1}`] = textarea.value;
+            });
 
-          tg.sendData(JSON.stringify(data));
-          tg.close();
-        } else {
-          form.reportValidity();
-        }
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+          } else {
+            form.reportValidity();
+          }
+        });
+      fillLater.addEventListener("click", () => {
+        tg.sendData("выход");
+        tg.close();
       });
       // send.addEventListener("click", () => {
       //   let antwort1 = document
